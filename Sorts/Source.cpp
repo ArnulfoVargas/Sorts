@@ -24,13 +24,24 @@ void BubbleSort(int* array, int size) {
 }
 
 void InsertionSort(int* array, int size) {
+	for (int i = 1; i < size; i++)
+	{
+		int key = array[i];
+		int j = i - 1;
 
+		while (key < array[j] && j >= 0)
+		{
+			array[j + 1] = array[j];
+			j--;
+		}
+		array[j + 1] = key;
+	}
 }
 
 void SelectionSort(int* array, int size) {
 	int holder{ 0 };
 	int minIndex{ 0 };
-	int minVal = INT_MIN;
+	int minVal = INT_MAX;
 
 	for (int i = 0; i < size; i++)
 	{
@@ -63,7 +74,7 @@ void main() {
 
 	std::cout << std::endl;
 
-	SelectionSort(nums, 9);
+	InsertionSort(nums, 9);
 
 	for (int num : nums)
 	{
